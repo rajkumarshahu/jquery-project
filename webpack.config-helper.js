@@ -29,7 +29,18 @@ module.exports = (options) => {
         }
       }),
       new HtmlWebpackPlugin({
+        filename:'index.html',
         template: './src/index.html'
+      }),
+      new HtmlWebpackPlugin({
+        filename: 'products.html',
+        template: './src/products.html',
+        chunks: []
+      }),
+      new HtmlWebpackPlugin({
+        filename: 'addproduct.html',
+        template: './src/addProduct.html',
+        chunks: []
       }),
       new CleanWebpackPlugin([dest])
     ],
