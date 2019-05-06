@@ -17,26 +17,26 @@
           <h1>Add Product</h1>
           
           <hr class="hr">
-          <form action="/src/products.html" >
+          <form id="add-product-form" action="/src/products.html" >
           
             <div >
               <label for="productname"><b>Product Name</b></label>
-              <input type="text" placeholder="Product Name" name="productname" required>
+              <input type="text" placeholder="Product Name" name="productname" id="productName" required>
           
               <label for="productdesc"><b>Product Description</b></label>
-              <input type="text" placeholder="Product Description" name="productdesc" required>
+              <input type="text" placeholder="Product Description" name="productdesc" id="productDesc" required>
 
               <label for="price"><b>Price</b></label>
               <input type="text" placeholder="Price" name="price" required>
 
               <label for="status"><b>Status</b></label>
-              <select class="form-control" >
+              <select class="form-control" id="status">
                     <option value="active">Active</option>
                     <option value="inactive">Inactive</option>
                     
                 </select>
                   
-              <button class="mt-5" type="submit">Add</button>
+              <button class="mt-5" type="submit" id="add-product">Add</button>
               
             </div>
           
