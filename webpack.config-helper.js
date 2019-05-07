@@ -38,7 +38,7 @@ module.exports = (options) => {
         chunks: []
       }),
       new HtmlWebpackPlugin({
-        filename: 'addproduct.html',
+        filename: 'addProduct.html',
         template: './src/addProduct.html',
         chunks: []
       }),

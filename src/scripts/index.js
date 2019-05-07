@@ -4,7 +4,7 @@ import $ from 'jquery';
 const mockUrl = 'http://5cc75aa0ae1431001472e41b.mockapi.io/api/v1/';
 const signupForm = $('#signup-form');
 const signinForm = $('#signin-form');
-const addProductForm= $('add-product-form');
+const addProductForm= $('#add-product-form');
 let promise = null;
 
 /* ########### SignUp Form  ############## */
@@ -43,8 +43,8 @@ $("#submit-button").click((e) => {
 
 	promise.then(
 		() => {
-			clearSignUpForm();
-			alert('User create sucessfully 1');
+			//clearSignUpForm();
+			$(signupForm).prepend('<div class="alert alert-success">User created successfully.</div>');
 		},
 		error => console.log('error: ', error)
 	);
@@ -70,16 +70,15 @@ $("#login-button").click((e) => {
 			const result = data.filter(x => x.userName == userName && x.password == password);
 			if (result.length > 0)
 			{
-				alert('Sucesfully Login !!');
-				window.location.href = '/src/products.html';
-			} else {
 				
-				alert('Username && Password is incorrect !!');
+				window.location.href = '/products.html';
+			} else {
+				$(signinForm).prepend('<div class="alert alert-danger">Incorrect username or password</div>');
+				
 				/* clearfunction */
 				clearSignInForm();
 				
-			}
-			
+			}		
 		},
 		error => console.log('error: ', error)
 	);
@@ -90,32 +89,37 @@ $("#login-button").click((e) => {
 
 
 /* ############ Start Add product Form ###################### */
-$("#add-button").click((e) => {
-   
-	const productName = $("#productName").val();
-	const productDesc = $("#productDesc").val();
-	const price= $("#price").val();
-	const status = $("#status").val();
-	
-	const product = {
-		productName: productName,
-		productDesc: productDesc,
-		price: price,
-		status: status
-	};
-
-	promise = $.post(mockUrl + "jproducts", product);
-
-	promise.then(
-		() => {
-			clearAddForm();
-			alert('Product added sucessfully');
-			
-		},
-		error => console.log('error: ', error)
-	);
-
+$("#add-product-button").click((e) => {
+	 
+	alert("message");
 	e.preventDefault();
+	
+	// const productName = $("#productName").val();
+	// const productDescription = $("#productDescription").val();
+	// const price= $("#price").val();
+	// const status = $("#status").val();
+	
+	// const product = {
+	// 	productName: productName,
+	// 	productDescription: productDescription,
+	// 	price: price,
+	// 	status: status
+	// };
+
+	// promise = $.post(mockUrl + "jproducts", product);
+
+	// promise.then(
+	// 	() => {
+	// 		clearAddForm();
+	// 		$(addProductForm).prepend('<div class="alert alert-success">Product added successfully.</div>');
+			
+	// 	},
+	// 	error => console.log('error: ', error)
+
+
+	// );
+
+	
 });
 
 /* ############ End Add product Form ###################### */
