@@ -15,9 +15,10 @@ module.exports = (options) => {
   let webpackConfig = {
     mode: options.mode,
     devtool: options.devtool,
-    entry: [
-      './src/scripts/index'
-    ],
+    entry: {
+      index: './src/scripts/index'
+    }
+    ,
     output: {
       path: dest,
       filename: 'bundle.[hash].js'
@@ -30,17 +31,39 @@ module.exports = (options) => {
       }),
       new HtmlWebpackPlugin({
         filename:'index.html',
-        template: './src/index.html'
+        template: './src/index.html',
+        inject: true,
+        chunks: ['index']
       }),
       new HtmlWebpackPlugin({
         filename: 'products.html',
         template: './src/products.html',
-        chunks: []
+        inject: true,
+        chunks: ['index']
       }),
       new HtmlWebpackPlugin({
-        filename: 'addProduct.html',
+        filename: 'addproduct.html',
         template: './src/addProduct.html',
-        chunks: []
+        inject: true,
+        chunks: ['index']
+      }),
+      new HtmlWebpackPlugin({
+        filename: 'video.html',
+        template: './src/video.html',
+        inject: true,
+        chunks: ['index']
+      }),
+      new HtmlWebpackPlugin({
+        filename: 'addvideo.html',
+        template: './src/addVideo.html',
+        inject: true,
+        chunks: ['index']
+      }),
+      new HtmlWebpackPlugin({
+        filename: 'dashboard.html',
+        template: './src/dashboard.html',
+        inject: true,
+        chunks: ['index']
       }),
       new CleanWebpackPlugin([dest])
     ],

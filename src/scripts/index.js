@@ -5,6 +5,7 @@ const mockUrl = 'http://5cc75aa0ae1431001472e41b.mockapi.io/api/v1/';
 const signupForm = $('#signup-form');
 const signinForm = $('#signin-form');
 const addProductForm= $('#add-product-form');
+let productList = [];
 let promise = null;
 
 /* ########### SignUp Form  ############## */
@@ -71,7 +72,7 @@ $("#login-button").click((e) => {
 			if (result.length > 0)
 			{
 				
-				window.location.href = '/products.html';
+				window.location.href = '/dashboard.html';
 			} else {
 				$(signinForm).prepend('<div class="alert alert-danger">Incorrect username or password</div>');
 				
@@ -90,36 +91,146 @@ $("#login-button").click((e) => {
 
 /* ############ Start Add product Form ###################### */
 $("#add-product-button").click((e) => {
-	 
-	alert("message");
+	const productName = $("#productName").val();
+	const productDescription = $("#productDescription").val();
+	const price= $("#price").val();
+	const status = $("#status").val();
+	
+	const product = {
+		productName: productName,
+		productDescription: productDescription,
+		price: price,
+		status: status
+	};
+
+	promise = $.post(mockUrl + "jproducts", product);
+
+	promise.then(
+		() => {
+			clearAddForm();
+			$(addProductForm).prepend('<div class="alert alert-success">Product added successfully.</div>');
+			window.location.href = '/products.html';
+		},
+		error => console.log('error: ', error)
+	);
+
 	e.preventDefault();
+});
+/* ############ End Add product Form ###################### */
+
+/** Function to get the list of items */
+
+const getProducts = () => {
+	promise = $.get(mockUrl + "jproducts");
+	promise.then(
+		(data) => {
+  		var html = '';
+  		$.each(data, function(key,value){
+			html +='<tr id="item">';
+			html +='<td>'+ value.id + '</td>';
+			html +='<td>'+ value.productName + '</td>';
+			html +='<td>'+ value.productDescription + '</td>';
+			html +='<td>'+ value.price + '</td>';
+			html +='<td>'+ value.status + '</td>';
+			html +='<td>'+ '<button class="btn btn-primary" id="edit-button">' + 'Edit'+ '</button>' + '&nbsp'+
+							'<button class="btn btn-danger" id="delete-button" >' + 'Delete'+ '</button>' + '</td>';
+			html +='</tr>';
+  		});
+		$('#table-products tbody').html(html);
+		},
+		error => console.log('error: ', error)
+
+
+	);
 	
-	// const productName = $("#productName").val();
-	// const productDescription = $("#productDescription").val();
-	// const price= $("#price").val();
-	// const status = $("#status").val();
+};
+
+/** End of function*/
+
+/** Function to get the videos */
+
+const getVideos = () => {
+	promise = $.get(mockUrl + "jvideos");
+	promise.then(
+		(data) => {
+  		var html = '';
+  		$.each(data, function(key,value){
+			html +='<tr id="item" class="text-center">';
+			html +='<td>'+ value.title + '</td>';
+			html +='<td>'+ value.runningTime + '</td>';
+			html +='<td>'+ value.genre + '</td>';
+			html +='<td>'+ value.rating + '</td>';
+			html +='<td>'+ value.director + '</td>';
+			html +='<td>'+ value.status + '</td>';
+			html +='<td>'+ '<button class="btn btn-primary" id="edit-button">' + 'Edit'+ '</button>' + '&nbsp'+
+							'<button class="btn btn-danger" id="delete-button" >' + 'Delete'+ '</button>' + '</td>';
+			html +='</tr>';
+  		});
+		$('#table-video tbody').html(html);
+		},
+		error => console.log('error: ', error)
+	);
+};
+
+/** End of get video function*/
+
+/* ############ Start Add video Form ###################### */
+$("#add-video-button").click((e) => {
+	const title = $("#title").val();
+	const runningTime = $("#runningTime").val();
+	const genre= $("#genre").val();
+	const rating = $("#rating").val();
+	const director = $("#director").val();
+	const status = $("#status").val();
 	
-	// const product = {
-	// 	productName: productName,
-	// 	productDescription: productDescription,
-	// 	price: price,
-	// 	status: status
-	// };
+	const video = {
+		title: title,
+		runningTime: runningTime,
+		genre: genre,
+		rating: rating,
+		director: director,
+		status: status
+	};
 
-	// promise = $.post(mockUrl + "jproducts", product);
+	promise = $.post(mockUrl + "jvideos", video);
 
-	// promise.then(
-	// 	() => {
-	// 		clearAddForm();
-	// 		$(addProductForm).prepend('<div class="alert alert-success">Product added successfully.</div>');
-			
-	// 	},
-	// 	error => console.log('error: ', error)
+	promise.then(
+		() => {
+			window.location.href = '/video.html';
+		},
+		error => console.log('error: ', error)
+	);
+	e.preventDefault();
+});
+/* ############ End Add video Form ###################### */
 
 
-	// );
+$("#to-products-btn").click((e) => {
+	window.location.href = '/products.html';
+	e.preventDefault();
+});
 
+
+
+$("#to-videos-btn").click((e) => {
+	window.location.href = '/video.html';
+	e.preventDefault();
+});
+
+
+/** Delete */
+function Delete(){
+    var par = $(this).parent(); //tr
+    par.remove();
+}; 
+
+$("#delete-button").click((e) => {
+	alert('delete btn');
 	
 });
 
-/* ############ End Add product Form ###################### */
+/**End Delete  */
+
+getProducts();
+
+getVideos();
