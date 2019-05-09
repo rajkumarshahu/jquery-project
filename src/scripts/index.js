@@ -132,7 +132,7 @@ const getProducts = () => {
 			html +='<td>'+ value.productDescription + '</td>';
 			html +='<td>'+ value.price + '</td>';
 			html +='<td>'+ value.status + '</td>';
-			html +='<td>'+ '<button class="btn btn-primary" id="edit-button">' + 'Edit'+ '</button>' + '&nbsp'+
+			html +='<td class="text-center">'+ '<button class="btn btn-primary" id="edit-button">' + 'Edit'+ '</button>' + '&nbsp'+
 							'<button class="btn btn-danger" id="delete-button" >' + 'Delete'+ '</button>' + '</td>';
 			html +='</tr>';
   		});
@@ -155,14 +155,14 @@ const getVideos = () => {
 		(data) => {
   		var html = '';
   		$.each(data, function(key,value){
-			html +='<tr id="item" class="text-center">';
+			html +='<tr id="item">';
 			html +='<td>'+ value.title + '</td>';
 			html +='<td>'+ value.runningTime + '</td>';
 			html +='<td>'+ value.genre + '</td>';
 			html +='<td>'+ value.rating + '</td>';
 			html +='<td>'+ value.director + '</td>';
 			html +='<td>'+ value.status + '</td>';
-			html +='<td>'+ '<button class="btn btn-primary" id="edit-button">' + 'Edit'+ '</button>' + '&nbsp'+
+			html +='<td class="text-center">'+ '<button class="btn btn-primary" id="edit-button">' + 'Edit'+ '</button>' + '&nbsp'+
 							'<button class="btn btn-danger" id="delete-button" >' + 'Delete'+ '</button>' + '</td>';
 			html +='</tr>';
   		});
@@ -205,14 +205,14 @@ $("#add-video-button").click((e) => {
 /* ############ End Add video Form ###################### */
 
 
-$("#to-products-btn").click((e) => {
+$(".to-products-btn").click((e) => {
 	window.location.href = '/products.html';
 	e.preventDefault();
 });
 
 
 
-$("#to-videos-btn").click((e) => {
+$(".to-videos-btn").click((e) => {
 	window.location.href = '/video.html';
 	e.preventDefault();
 });
@@ -228,6 +228,7 @@ $("#delete-button").click((e) => {
 	alert('delete btn');
 	
 });
+
 
 /**End Delete  */
 

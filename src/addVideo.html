@@ -4,19 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Video</title>
+  <title>JQuery Project/Video</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand text-white" onclick="window.location.href = '/dashboard.html';">JqueryApp</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link " onclick="window.location.href = '/dashboard.html';" >Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link to-products-btn">Products</a>
+            <a class="nav-item nav-link active to-videos-btn">Videos</a>          
+          </div>
+        </div>
+        <button class="btn btn-secondary float-right text-white" onclick="window.location.href = '/index.html';"> Log out</button> 
+      </nav>
 <div class="container">
     <div class="jumbotron"></div>
   <div class="">
-      <div class="add-product-container">
+      <div class="border border-light p-4">
           <h1>Add Video</h1>
           
           <hr class="hr">
-          <form id="add-product-form" >
-          
+          <form id="add-product-form" >          
               <div class="form-row">
                   <div class="form-group col-md-4">
                     <label for="title"><b>Title</b></label>
@@ -54,6 +67,15 @@
          
       </div>
   </div> 
+  <!-- Footer -->
+  <div>&nbsp;</div><div>&nbsp;</div>
+  <footer class="fixed-bottom">
+      <div class="text-center py-3 bg-dark text-white">© <script type="text/javascript">
+        document.write(new Date().getFullYear());
+      </script> Copyright Jyoti  
+      </div>
+    </footer>
+  <!-- Footer -->
 </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
