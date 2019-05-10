@@ -5,6 +5,7 @@ const mockUrl = 'http://5cc75aa0ae1431001472e41b.mockapi.io/api/v1/';
 const signupForm = $('#signup-form');
 const signinForm = $('#signin-form');
 const addProductForm= $('#add-product-form');
+const addCategoryForm=$('#add-category-form');
 let productList = [];
 let promise = null;
 
@@ -24,6 +25,10 @@ const clearSignInForm = () => {
 
 const clearAddForm = () => {
 	$(':input',addProductForm).val('');
+};
+
+const clearAddCategoryForm = () => {
+	$(':input',addCategoryForm).val('');
 };
 
 $("#submit-button").click((e) => {
@@ -73,6 +78,8 @@ $("#login-button").click((e) => {
 			{
 				
 				window.location.href = '/dashboard.html';
+				
+				
 			} else {
 				$(signinForm).prepend('<div class="alert alert-danger">Incorrect username or password</div>');
 				
@@ -84,6 +91,8 @@ $("#login-button").click((e) => {
 		error => console.log('error: ', error)
 	);
 
+
+
 	e.preventDefault();
 });
 /* ############ End SignIn Form ###################### */
@@ -92,6 +101,7 @@ $("#login-button").click((e) => {
 /* ############ Start Add product Form ###################### */
 $("#add-product-button").click((e) => {
 	const productName = $("#productName").val();
+	const categoryName = $("#categoryName").val();
 	const productDescription = $("#productDescription").val();
 	const price= $("#price").val();
 	const status = $("#status").val();
@@ -99,8 +109,10 @@ $("#add-product-button").click((e) => {
 	const product = {
 		productName: productName,
 		productDescription: productDescription,
+		categoryName: categoryName,
 		price: price,
 		status: status
+		
 	};
 
 	promise = $.post(mockUrl + "jproducts", product);
@@ -118,6 +130,32 @@ $("#add-product-button").click((e) => {
 });
 /* ############ End Add product Form ###################### */
 
+
+/* ############ Category Form ###################### */
+
+$("#save-category-button").click((e) => {
+	const itemCategory = $("#itemCategory").val();
+
+	const category = {
+		itemCategory: itemCategory,
+	};
+
+	promise = $.post(mockUrl + "jcategories", category);
+
+	promise.then(
+		() => {
+			clearAddCategoryForm();
+			$(addCategoryForm).prepend('<div class="alert alert-success">Category added successfully.</div>');
+			
+		},
+		error => console.log('error: ', error)
+	);
+
+	e.preventDefault();
+
+});
+/* ############ End save category Form ###################### */
+
 /** Function to get the list of items */
 
 const getProducts = () => {
@@ -129,6 +167,7 @@ const getProducts = () => {
 			html +='<tr id="item">';
 			html +='<td>'+ value.id + '</td>';
 			html +='<td>'+ value.productName + '</td>';
+			html +='<td>'+ value.categoryName + '</td>';
 			html +='<td>'+ value.productDescription + '</td>';
 			html +='<td>'+ value.price + '</td>';
 			html +='<td>'+ value.status + '</td>';
@@ -145,7 +184,29 @@ const getProducts = () => {
 	
 };
 
-/** End of function*/
+/** End of get the list of items function*/
+
+/** Function to get the category */
+
+const getCategories = () => {
+	promise = $.get(mockUrl + "jcategories");
+	promise.then(
+		(data) => {
+  		var html = '';
+  		$.each(data, function(key,value){
+		
+			html +='<option id="itemCategory" value= "' + value.itemCategory + '";>'+ value.itemCategory+'</option>';
+			
+  		});
+		$('#category-name').html(html);
+		},
+		error => console.log('error: ', error)
+
+	);
+	
+};
+
+/** End of get the list of items function*/
 
 /** Function to get the videos */
 
@@ -228,10 +289,32 @@ $("#delete-button").click((e) => {
 	alert('delete btn');
 	
 });
-
-
 /**End Delete  */
+
+
+/** Function to get the list of items */
+
+const getUsername = () => {
+	promise = $.get(mockUrl + "jusers");
+	promise.then(
+		(data) => {
+  		var html = '';
+  		$.each(data, function(key,value){
+			html += '<p>'+ value.userName + '</p>';
+  		});
+		$('#demo').html(html);
+		},
+		error => console.log('error: ', error)
+
+	);
+	
+};
+
+/** End of get the list of items function*/
+getUsername();
 
 getProducts();
 
 getVideos();
+
+getCategories();

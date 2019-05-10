@@ -17,8 +17,7 @@ module.exports = (options) => {
     devtool: options.devtool,
     entry: {
       index: './src/scripts/index'
-    }
-    ,
+    },
     output: {
       path: dest,
       filename: 'bundle.[hash].js'
