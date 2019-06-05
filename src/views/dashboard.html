@@ -24,9 +24,11 @@
                   Settings <i class="fas fa-cog"></i>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#add-category-modal" data-whatever="@mdo">Category</button>
-                </div>
-              </div>          
+                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#add-category-modal" data-whatever="@mdo">Add Product Category</button>
+                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#add-genre-modal" data-whatever="@mdo">Add Video Genre</button>
+                  </div>
+                
+            </div>          
           </div>
         </div>
         <button class="btn btn-secondary float-right text-white" onclick="window.location.href = '/index.html';"> Log out</button> 
@@ -69,7 +71,7 @@
       <!-- Footer -->
 </div>
 
-<!--Modal-->
+<!--Modal add category-->
 <div class="modal fade" id="add-category-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -94,6 +96,33 @@
       </div>
     </div>
   </div>
+
+
+  <!--Modal add genre-->
+<div class="modal fade" id="add-genre-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel">Add New Genre</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="add-genre-form">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Category Name:</label>
+            <input type="text" class="form-control" id="genreItem">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="save-genre-button">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
   sessionStorage.set(userName, $("#userNames").val());

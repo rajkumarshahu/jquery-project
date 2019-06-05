@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <title>JQuery Project/Produts</title>
+</head>
+
+<body>
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand text-white" onclick="window.location.href = '/dashboard.html';">JqueryApp</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" onclick="window.location.href = '/dashboard.html';">Home <span
+            class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link active to-products-btn">Products</a>
+        <a class="nav-item nav-link to-videos-btn">Videos</a>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Settings <i class="fas fa-cog"></i>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <button type="button" class="dropdown-item" data-toggle="modal" data-target="#add-category-modal"
+              data-whatever="@mdo">Category</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-secondary float-right text-white" onclick="window.location.href = '/index.html';"> Log
+      out</button>
+  </nav>
+  <div class="container">
+    <!-- <div class="jumbotron"><p>Products</p></div> -->
+    <div class="input-group mt-3">
+      <input type="text" id="productInput" class="form-control"
+        placeholder="Search product">
+      <div>
+        <input type="text" id="Input1" placeholder="Minimum" />
+        <input type="text" id="Input2" placeholder="Maximum" />
+        <button class="btn btn-outline-secondary" id="search-by-price"  type="button"><span
+            class="fa fa-search"></span></button>
+
+        <div>&nbsp;</div>
+      <div class="text-right">
+        <button class="btn btn-outline-secondary mb-4" type="button"
+        onclick="window.location.href = '/addproduct.html';" id="add-button">Add<span
+          class="fa fa-plus"></span></button>
+      </div>
+
+      </div>
+      <table class="table table-bordered table-striped table-hover" id="table-products">
+        <thead class="thead-light">
+          <tr class="text-center">
+            <th scope="col">ID</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Category Name</th>
+            <th scope="col">Product Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      function deleteRow(r) {
+        var i = r.parentNode.parentNode.rowIndex;
+        document.getElementById("table-products").deleteRow(i);
+      }
+    </script>
+
+
+
+
+    <!-- Footer -->
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+    <footer class="fixed-bottom">
+      <div class="text-center py-3 bg-dark text-white">©
+        <script type="text/javascript">
+          document.write(new Date().getFullYear());
+        </script> Copyright Jyoti
+      </div>
+    </footer>
+    <!-- Footer -->
+  </div>
+  <!--Modal-->
+  <div class="modal fade" id="add-category-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add New Category</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="add-category-form">
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Category Name:</label>
+              <input type="text" class="form-control" id="itemCategory">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="save-category-button">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

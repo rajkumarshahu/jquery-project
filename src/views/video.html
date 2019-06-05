@@ -19,20 +19,28 @@
           <div class="navbar-nav">
             <a class="nav-item nav-link " onclick="window.location.href = '/dashboard.html';" >Home <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link to-products-btn">Products</a>
-            <a class="nav-item nav-link active to-videos-btn">Videos</a>          
+            <a class="nav-item nav-link active to-videos-btn">Videos</a>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Settings <i class="fas fa-cog"></i>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <button type="button" class="dropdown-item" data-toggle="modal" data-target="#add-category-modal" data-whatever="@mdo">Category</button>
+              </div>
+          </div>
           </div>
         </div>
-        <button class="btn btn-secondary float-right text-white" onclick="window.location.href = '/index.html';"> Log out</button> 
+        <button class="btn btn-secondary float-right text-white" onclick="window.location.href = '/index.html';"> Log out</button>
       </nav>
     <div class="container">
         <!-- <div class="jumbotron"><p>Video</p></div> -->
             <div class="input-group mt-3">
                 <div class="row">
-                  
+
                 </div>
-                    <input type="text" class="form-control ml-5" placeholder="Search" >
+                    <input type="text" id="videoInput" class="form-control ml-5" placeholder="Search video title" >
                     <div >
-                      <button class="btn btn-outline-secondary" type="button"><span class="fa fa-search"></span></button>
+                      <button class="btn btn-outline-secondary"  type="button"><span class="fa fa-search"></span></button>
                       <div>&nbsp;</div>
                       <button class="btn btn-outline-secondary mb-3 mr-2" type="button" onclick="window.location.href = '/addvideo.html';" id="add-button">Add<span class="fa fa-plus"></span></button>
                     </div>
@@ -49,21 +57,69 @@
                         </tr>
                         </thead>
                         <tbody>
-                          
+
                         </tbody>
-                      </table>  
+                      </table>
         </div>
+
+        <!-- <script>
+          function searchVideo() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("videoInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("table-video");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+              td = tr[i].getElementsByTagName("td")[0];
+              if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  tr[i].style.display = "";
+                } else {
+                  tr[i].style.display = "none";
+                }
+              }
+            }
+          }
+          </script> -->
         <!-- Footer -->
       <div>&nbsp;</div><div>&nbsp;</div>
       <footer class="fixed-bottom">
           <div class="text-center py-3 bg-dark text-white">© <script type="text/javascript">
             document.write(new Date().getFullYear());
-          </script> Copyright Jyoti  
+          </script> Copyright Jyoti
           </div>
         </footer>
       <!-- Footer -->
-    </div>        
-
+    </div>
+<!--Modal-->
+<div class="modal fade" id="add-category-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Category</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="add-category-form">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Category Name:</label>
+            <input type="text" class="form-control" id="itemCategory">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="save-category-button">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

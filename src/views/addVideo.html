@@ -17,7 +17,15 @@
           <div class="navbar-nav">
             <a class="nav-item nav-link " onclick="window.location.href = '/dashboard.html';" >Home <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link to-products-btn">Products</a>
-            <a class="nav-item nav-link active to-videos-btn">Videos</a>          
+            <a class="nav-item nav-link active to-videos-btn">Videos</a> 
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Settings <i class="fas fa-cog"></i>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <button type="button" class="dropdown-item" data-toggle="modal" data-target="#add-category-modal" data-whatever="@mdo">Category</button>
+              </div>
+            </div>          
           </div>
         </div>
         <button class="btn btn-secondary float-right text-white" onclick="window.location.href = '/index.html';"> Log out</button> 
@@ -41,8 +49,11 @@
                   </div>
                   <div class="form-group col-md-4">
                     <label for="genre"><b>Genre</b></label>
-                    <input type="text" class="form-control" placeholder="Genre" name="genre" id="genre" required>
-                </div>  
+                    <!-- <input type="text" class="form-control" placeholder="Genre" name="genre" id="genre" required> -->
+                    <select class="form-control" id="genre-name">
+
+                    </select>
+                  </div>  
             </div>
               <div class="form-row">
                   <div class="form-group col-md-4">
@@ -76,6 +87,31 @@
       </div>
     </footer>
   <!-- Footer -->
+</div>
+<!--Modal-->
+<div class="modal fade" id="add-category-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Category</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="add-category-form">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Category Name:</label>
+            <input type="text" class="form-control" id="itemCategory">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="save-category-button">Save</button>
+      </div>
+    </div>
+  </div>
 </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

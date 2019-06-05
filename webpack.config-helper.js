@@ -16,12 +16,22 @@ module.exports = (options) => {
     mode: options.mode,
     devtool: options.devtool,
     entry: {
-      index: './src/scripts/index'
+      index: './src/scripts/index',
+      video: './src/scripts/video.js',
+      products: './src/scripts/products.js',
+      addVideo: './src/scripts/addVideo.js',
+      addProduct: './src/scripts/addProduct.js'
     },
+    // output: {
+    //   path: dest,
+    //   filename: 'bundle.[hash].js'
+    // },
     output: {
-      path: dest,
-      filename: 'bundle.[hash].js'
-    },
+      path:__dirname+'/dist/js',
+
+      //replace filename:'app.js'
+      filename:'[name].js'
+  },
     plugins: [
       new Webpack.DefinePlugin({
         'process.env': {
@@ -30,37 +40,37 @@ module.exports = (options) => {
       }),
       new HtmlWebpackPlugin({
         filename:'index.html',
-        template: './src/index.html',
+        template: './src/views/index.html',
         inject: true,
         chunks: ['index']
       }),
       new HtmlWebpackPlugin({
         filename: 'products.html',
-        template: './src/products.html',
+        template: './src/views/products.html',
         inject: true,
-        chunks: ['index']
+        chunks: ['products']
       }),
       new HtmlWebpackPlugin({
         filename: 'addproduct.html',
-        template: './src/addProduct.html',
+        template: './src/views/addProduct.html',
         inject: true,
-        chunks: ['index']
+        chunks: ['addProduct']
       }),
       new HtmlWebpackPlugin({
         filename: 'video.html',
-        template: './src/video.html',
+        template: './src/views/video.html',
         inject: true,
-        chunks: ['index']
+        chunks: ['video']
       }),
       new HtmlWebpackPlugin({
         filename: 'addvideo.html',
-        template: './src/addVideo.html',
+        template: './src/views/addVideo.html',
         inject: true,
-        chunks: ['index']
+        chunks: ['addVideo']
       }),
       new HtmlWebpackPlugin({
         filename: 'dashboard.html',
-        template: './src/dashboard.html',
+        template: './src/views/dashboard.html',
         inject: true,
         chunks: ['index']
       }),
